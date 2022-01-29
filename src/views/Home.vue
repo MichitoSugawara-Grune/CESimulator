@@ -225,9 +225,9 @@
   </div>
 </template>
 
-<script>
-import VueDiagramEditor from "@/plugins/vue-diagram-editor";
-import "@/plugins/vue-diagram-editor/dist/vue-diagram-editor.css";
+<script></script>
+import VueDiagramEditor from "vue-diagram-editor";
+import "vue-diagram-editor/dist/vue-diagram-editor.css";
 
 export default {
   name: "",
