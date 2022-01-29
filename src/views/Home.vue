@@ -6,6 +6,11 @@
         :height="height"
         :node-color="nodeColor"
         :node-pulsable="nodePulsable"
+        :node-deletable="
+          (node) => {
+            return node.data.type != 0 && node.data.type != 1;
+          }
+        "
         @updated-node="updateHistory"
         @deleted-node="updateHistory"
         @created-link="updateHistory"
@@ -226,8 +231,9 @@
 </template>
 
 <script>
-import VueDiagramEditor from "@/plugins/vue-diagram-editor";
-import "@/plugins/vue-diagram-editor/dist/vue-diagram-editor.css";
+import VueDiagramEditor from "vue-diagram-editor";
+import "vue-diagram-editor/dist/vue-diagram-editor.css";
+import _ from "lodash";
 
 export default {
   name: "",
@@ -524,12 +530,20 @@ export default {
     // 変数・エディタ間の自動同期 切り替え
     toggleAutoSync() {
       if (!this.isAutoSyncEnabled) {
-        let unwatchModel = this.$watch("model", this.syncFromEditor, {
-          deep: true,
-        });
-        let unwatchDiagram = this.$watch("diagram", this.syncToEditor, {
-          deep: true,
-        });
+        let unwatchModel = this.$watch(
+          "model",
+          _.debounce(this.syncFromEditor, 100),
+          {
+            deep: true,
+          }
+        );
+        let unwatchDiagram = this.$watch(
+          "diagram",
+          _.debounce(this.syncToEditor, 100),
+          {
+            deep: true,
+          }
+        );
         this.unwatch = function () {
           unwatchModel();
           unwatchDiagram();
