@@ -1,8 +1,0 @@
-/*!
- * vue-diagram-editor v1.2.1 | (c) 2021 Maksim Kutishchev
- * Released under the Apache 2 License.
- * https://vue-diagram-editor.js.org
- */
-.diagram-editor__wrapper{position:relative}.diagram-editor__wrapper svg{-webkit-user-select:none;-ms-user-select:none;user-select:none;font-family:Helvetica,sans-serif}.diagram-editor__node-body{background-color:transparent}.diagram-editor__delete{cursor:pointer}.diagram-editor__delete rect{fill:#fff;fill-opacity:.25}.diagram-editor__delete line{stroke:#000;stroke-width:2}.diagram--editor__pulse{animation-duration:2s;animation-name:diagram-editor--node-pulse;animation-iteration-count:infinite}@keyframes diagram-editor--node-pulse{0%{fill-opacity:0;stroke-width:0}50%{fill-opacity:1;stroke-width:8}100%{fill-opacity:0;stroke-width:0}}
-
-/*# sourceMappingURL=vue-diagram-editor.css.map*/
