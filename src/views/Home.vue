@@ -232,7 +232,6 @@
 
 <script>
 import VueDiagramEditor from "vue-diagram-editor";
-import "vue-diagram-editor/dist/vue-diagram-editor.css";
 import _ from "lodash";
 
 export default {
@@ -1015,11 +1014,59 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
 .editor {
   height: 80vh;
 }
 .panel {
   height: 10vh;
+}
+
+.diagram-editor__wrapper {
+  position: relative;
+  height: 100%;
+  svg {
+    user-select: none;
+    font-family: Helvetica, sans-serif;
+  }
+}
+
+.diagram-editor__node-body {
+  background-color: transparent;
+}
+
+.diagram-editor__delete {
+  cursor: pointer;
+
+  rect {
+    fill: #000;
+    fill-opacity: 0;
+  }
+
+  line {
+    stroke: rgb(255, 255, 255);
+    stroke-width: 1;
+  }
+}
+
+.diagram--editor__pulse {
+  animation-duration: 2s;
+  animation-name: diagram-editor--node-pulse;
+  animation-iteration-count: infinite;
+}
+
+@keyframes diagram-editor--node-pulse {
+  0% {
+    fill-opacity: 0;
+    stroke-width: 0;
+  }
+  50% {
+    fill-opacity: 1;
+    stroke-width: 16;
+  }
+  100% {
+    fill-opacity: 0;
+    stroke-width: 0;
+  }
 }
 </style>
